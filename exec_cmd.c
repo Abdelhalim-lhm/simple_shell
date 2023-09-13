@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * exec_cmd - fucntion that execute commande with 1 argument
+ * exec_cmd - fucntion that execute commande with arguments
  * @cmd: command to execute
  * Return: 0 on success
  */
@@ -16,15 +16,15 @@ int exec_cmd(char *cmd)
 	}
 	else if (child_pid == 0)
 	{
-		char *argv[3];
+		char *argv[50];
 
-		argv[2] = NULL;
 		argv[i] = strtok(cmd, " ");
-		while (i < 2 && argv[i] != NULL)
+		while (argv[i] != NULL)
 		{
 			i++;
 			argv[i] = strtok(NULL, " ");
 		}
+		argv[i + 1] = NULL;
 		if (execve(argv[0], argv, NULL) == -1)
 		{
 			perror("./shell");
