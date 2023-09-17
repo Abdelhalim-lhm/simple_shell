@@ -5,7 +5,7 @@
  */
 int main(void)
 {
-	char cmd[100];
+	char cmd[MAX_CMD_LENGTH];
 
 	while (1)
 	{
