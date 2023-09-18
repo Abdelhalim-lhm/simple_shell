@@ -1,7 +1,8 @@
 #include "shell.h"
+
 /**
- * main - fucntion that display a prompt and wait for user
- * Return: wait for user until end of file condition
+ * main - Function that displays a prompt and waits for user input.
+ * Return: Waits for user input until end of file condition.
  */
 int main(void)
 {
@@ -11,13 +12,24 @@ int main(void)
 	{
 		if (isatty(STDIN_FILENO))
 		{
-		write(STDOUT_FILENO, "#cisfun$ ", strlen("#cisfun$ "));
-		fflush(stdout);
+			print("#cisfun$ ");
+			fflush(stdout);
 		}
 		if (fgets(cmd, sizeof(cmd), stdin) == NULL)
 			break;
 		cmd[strcspn(cmd, "\n")] = '\0';
-		exec_cmd(cmd);
+
+		if (strcmp(cmd, "exit") == 0)
+		{
+			print("Exiting the shell...\n");
+			exit(0);
+		}
+
+		if (path(cmd) != 0)
+		{
+			print("Command execution failed for: %s\n", cmd);
+		}
 	}
+
 	return (0);
 }
