@@ -8,16 +8,16 @@
 char *get_command_path(char *cmd)
 {
 	char *path = getenv("PATH");
+	char *dir, *saveptr;
+	char *path_copy;
 
 	if (!path)
 		return (NULL);
 
-	char *path_copy = strdup(path);
+	path_copy = strdup(path);
 
 	if (!path_copy)
 		return (NULL);
-
-	char *dir, *saveptr;
 
 	dir = strtok_r(path_copy, ":", &saveptr);
 

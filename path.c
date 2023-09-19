@@ -7,17 +7,20 @@
  */
 int path(char *cmd)
 {
-	if (strcmp(cmd, "/bin/ls") == 0)
-	{
-		char *argv[] = {"/bin/ls", NULL};
-
-		return (execute_command("/bin/ls", argv));
-	}
-
+	char *full_path;
 	char *argv[MAX_CMD_LENGTH / 2];
 	int i = 0;
+	int result;
+	char *token;
 
-	char *token = strtok(cmd, " ");
+	if (strcmp(cmd, "/bin/ls") == 0)
+	{
+		char *ls_argv[] = {"/bin/ls", NULL};
+
+		return (execute_command("/bin/ls", ls_argv));
+	}
+
+	token = strtok(cmd, " ");
 	while (token != NULL)
 	{
 		argv[i++] = token;
@@ -25,7 +28,7 @@ int path(char *cmd)
 	}
 	argv[i] = NULL;
 
-	char *full_path = get_command_path(argv[0]);
+	full_path = get_command_path(argv[0]);
 
 	if (!full_path)
 	{
@@ -33,8 +36,6 @@ int path(char *cmd)
 		return (1);
 	}
 
-	int result = execute_command(full_path, argv);
-
-	free(full_path);
+	result = execute_command(full_path, argv);
 	return (result);
 }
