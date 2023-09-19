@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * print - Custom printf-like function .
+ * print - Custom printf-like function.
  * @format: The format string with optional %d and %s specifiers.
  * @...: Additional arguments corresponding to %d and %s specifiers.
  */
@@ -10,38 +10,41 @@ void print(const char *format, ...)
 	va_list args;
 
 	va_start(args, format);
-
-	const char *ptr = format;
-
-	while (*ptr)
+	while (*format)
 	{
-		if (*ptr == '%')
+		if (*format == '%')
 		{
-			ptr++;
-			if (*ptr == '\0')
+			format++;
+			if (*format == '\0')
 				break;
-			if (*ptr == 'd')
-				printf("%d", va_arg(args, int));
-			else if (*ptr == 's')
+			if (*format == 'd')
+			{
+				char buffer[32];
+				int num = va_arg(args, int);
+				int len = snprintf(buffer, sizeof(buffer), "%d", num);
+
+				write(1, buffer, len);
+			}
+			else if (*format == 's')
 			{
 				char *str = va_arg(args, char *);
 
 				if (str)
-					printf("%s", str);
+					write(1, str, strlen(str));
 				else
-					printf("(null)");
+					write(1, "(null)", 6);
 			}
 			else
 			{
-				putchar('%');
-				putchar(*ptr);
+				write(1, "%", 1);
+				write(1, format, 1);
 			}
 		}
 		else
 		{
-			putchar(*ptr);
+			write(1, format, 1);
 		}
-		ptr++;
+		format++;
 	}
 	va_end(args);
 }
