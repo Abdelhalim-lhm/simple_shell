@@ -24,6 +24,10 @@ int main(void)
 			print("Exiting the shell...\n");
 			exit(0);
 		}
+		if (strcmp(cmd, "env") == 0)
+		{
+			env();
+		}
 
 		if (path(cmd) != 0)
 		{
