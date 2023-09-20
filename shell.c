@@ -16,19 +16,23 @@ int main(void)
 			fflush(stdout);
 		}
 		if (fgets(cmd, sizeof(cmd), stdin) == NULL)
+		{
+			if (isatty(STDIN_FILENO))
+			{
+				print("\n");
+			}
 			break;
+		}
 		cmd[strcspn(cmd, "\n")] = '\0';
 
 		if (strcmp(cmd, "exit") == 0)
 		{
-			print("Exiting the shell...\n");
 			exit(0);
 		}
 		if (strcmp(cmd, "env") == 0)
 		{
 			env();
 		}
-
 		if (path(cmd) != 0)
 		{
 			print("Command execution failed for: %s\n", cmd);
