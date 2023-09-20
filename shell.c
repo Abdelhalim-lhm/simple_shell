@@ -30,15 +30,15 @@ int main(void)
 		}
 		if (_strcmp(cmd, "env") == 0)
 		{
-			free(cmd);
 			env();
 		}
 		status = path(cmd);
 		if (status == 100)
 		{
+			status = 0;
 			continue;
 		}
-		free(cmd);
+		free(cmd), cmd = NULL;
 	}
 	return (0);
 }

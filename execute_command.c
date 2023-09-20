@@ -23,6 +23,8 @@ int execute_command(char *full_path, char *argv[])
 	{
 		if (execve(full_path, argv, NULL) == -1)
 		{
+			free(full_path);
+			free(argv);
 			perror("execve");
 			return (1);
 		}
