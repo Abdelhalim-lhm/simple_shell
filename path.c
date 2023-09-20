@@ -20,7 +20,11 @@ int path(char *cmd)
 		return (execute_command("/bin/ls", ls_argv));
 	}
 
-	token = strtok(cmd, " ");
+	token = strtok(cmd, " \t\n");
+	if (token == NULL)
+	{
+		return (100);
+	}
 	while (token != NULL)
 	{
 		argv[i++] = token;

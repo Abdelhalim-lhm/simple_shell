@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #define MAX_CMD_LENGTH 100
 extern char **environ;
+char *get_linecmd(void);
 int exec_cmd(char *);
 int path(char *);
 char *get_command_path(char *cmd);

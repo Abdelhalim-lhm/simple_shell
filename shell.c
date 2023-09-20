@@ -6,22 +6,19 @@
  */
 int main(void)
 {
-	char cmd[MAX_CMD_LENGTH];
+	char *cmd = NULL;
 
 	while (1)
 	{
-		if (isatty(STDIN_FILENO))
-		{
-			print("#cisfun$ ");
-			fflush(stdout);
-		}
-		if (fgets(cmd, sizeof(cmd), stdin) == NULL)
+		cmd = get_linecmd();
+		if (cmd == NULL)
 		{
 			if (isatty(STDIN_FILENO))
 			{
-				print("\n");
+			print("\n");
 			}
-			break;
+			free(cmd);
+			return (0);
 		}
 		cmd[strcspn(cmd, "\n")] = '\0';
 
@@ -33,11 +30,10 @@ int main(void)
 		{
 			env();
 		}
-		if (path(cmd) != 0)
+		if (path(cmd) == 100)
 		{
-			print("Command execution failed for: %s\n", cmd);
+			continue;
 		}
 	}
-
 	return (0);
 }
