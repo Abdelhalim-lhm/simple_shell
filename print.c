@@ -30,7 +30,7 @@ void print(const char *format, ...)
 				char *str = va_arg(args, char *);
 
 				if (str)
-					write(1, str, strlen(str));
+					write(1, str, _strlen(str));
 				else
 					write(1, "(null)", 6);
 			}

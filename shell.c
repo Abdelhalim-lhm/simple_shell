@@ -22,11 +22,11 @@ int main(void)
 		}
 		cmd[strcspn(cmd, "\n")] = '\0';
 
-		if (strcmp(cmd, "exit") == 0)
+		if (_strcmp(cmd, "exit") == 0)
 		{
 			exit(0);
 		}
-		if (strcmp(cmd, "env") == 0)
+		if (_strcmp(cmd, "env") == 0)
 		{
 			env();
 		}

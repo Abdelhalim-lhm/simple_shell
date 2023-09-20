@@ -13,7 +13,7 @@ int path(char *cmd)
 	int result;
 	char *token;
 
-	if (strcmp(cmd, "/bin/ls") == 0)
+	if (_strcmp(cmd, "/bin/ls") == 0)
 	{
 		char *ls_argv[] = {"/bin/ls", NULL};
 
@@ -36,7 +36,7 @@ int path(char *cmd)
 
 	if (!full_path)
 	{
-		fprintf(stderr, "Command not found: %s\n", argv[0]);
+		print("hsh:%s: command not found\n", argv[0]);
 		return (1);
 	}
 
