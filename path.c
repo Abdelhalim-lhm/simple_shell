@@ -41,5 +41,6 @@ int path(char *cmd)
 	}
 
 	result = execute_command(full_path, argv);
+	free(full_path);
 	return (result);
 }

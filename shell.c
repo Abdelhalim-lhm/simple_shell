@@ -7,6 +7,7 @@
 int main(void)
 {
 	char *cmd = NULL;
+	int status = 0;
 
 	while (1)
 	{
@@ -18,22 +19,26 @@ int main(void)
 			print("\n");
 			}
 			free(cmd);
-			return (0);
+			return (status);
 		}
 		cmd[strcspn(cmd, "\n")] = '\0';
 
 		if (_strcmp(cmd, "exit") == 0)
 		{
-			exit(0);
+			free(cmd);
+			exit(status);
 		}
 		if (_strcmp(cmd, "env") == 0)
 		{
+			free(cmd);
 			env();
 		}
-		if (path(cmd) == 100)
+		status = path(cmd);
+		if (status == 100)
 		{
 			continue;
 		}
+		free(cmd);
 	}
 	return (0);
 }
