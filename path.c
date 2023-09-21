@@ -23,6 +23,7 @@ int path(char *cmd)
 	token = strtok(cmd, " \t\n");
 	if (token == NULL)
 	{
+		free(cmd);
 		return (100);
 	}
 	while (token != NULL)
@@ -41,6 +42,5 @@ int path(char *cmd)
 	}
 
 	result = execute_command(full_path, argv);
-	free(full_path);
 	return (result);
 }
