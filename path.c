@@ -4,7 +4,7 @@
  * path - Execute a command based on its path or name.
  * @cmd: The command to execute.
  *
- * Return: 0 on success, 1 on failure.
+ * Return: 0 on success, status on failure.
  */
 int path(char *cmd)
 {
@@ -23,7 +23,7 @@ int path(char *cmd)
 	while (token != NULL)
 	{
 		argv[i++] = token;
-		token = strtok(NULL, " ");
+		token = strtok(NULL, " \t\n");
 	}
 	argv[i] = NULL;
 
