@@ -14,7 +14,12 @@ int path(char *cmd)
 	int result;
 	char *full_path;
 
-	token = strtok(cmd, " ");
+	token = strtok(cmd, " \t\n");
+	if (token == NULL)
+	{
+		free(cmd);
+		return (100);
+	}
 	while (token != NULL)
 	{
 		argv[i++] = token;
@@ -31,8 +36,8 @@ int path(char *cmd)
 	full_path = get_command_path(argv[0]);
 	if (!full_path)
 	{
-		fprintf(stderr, "Command not found: %s\n", argv[0]);
-		return (1);
+		print("hsh:%s: command not found\n", argv[0]);
+		return (127);
 	}
 
 	result = execute_command(full_path, argv);
