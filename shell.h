@@ -7,6 +7,7 @@
 #include <sys/wait.h>
 #include <stdlib.h>
 #define MAX_CMD_LENGTH 100
+#define MAX_PATH_LENGTH 256
 extern char **environ;
 int _strlen(char *s);
 int _strcmp(char *s1, char *s2);

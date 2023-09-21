@@ -10,7 +10,7 @@ char *get_linecmd(void)
 
 	if (isatty(STDIN_FILENO))
 	{
-		print("#cisfun$ ");
+		print("$ ");
 	}
 	if (getline(&cmd, &len, stdin) < 0)
 	{

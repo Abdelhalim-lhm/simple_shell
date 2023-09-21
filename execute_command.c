@@ -31,7 +31,6 @@ int execute_command(char *full_path, char *argv[])
 	else
 	{
 		waitpid(child_pid, &status, 0);
-		free(full_path);
 		return (0);
 	}
 	return (1);

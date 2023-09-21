@@ -1,9 +1,11 @@
 #include "shell.h"
+#include <string.h>
 
 /**
- * get_command_path - looks for the full path
- * @cmd: user command input
- * Return: copy of the full path
+ * get_command_path - Get the full path of a command.
+ * @cmd: The command to find.
+ *
+ * Return: The full path of the command if found, otherwise NULL.
  */
 char *get_command_path(char *cmd)
 {
@@ -23,9 +25,11 @@ char *get_command_path(char *cmd)
 
 	while (dir)
 	{
-		char full_path[200];
+		char full_path[MAX_PATH_LENGTH];
 
-		snprintf(full_path, sizeof(full_path), "%s/%s", dir, cmd);
+		strcpy(full_path, dir);
+		strcat(full_path, "/");
+		strcat(full_path, cmd);
 
 		if (access(full_path, X_OK) == 0)
 		{
