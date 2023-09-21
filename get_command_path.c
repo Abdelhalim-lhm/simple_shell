@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * get_command_path - Obtenir le chemin complet d'une commande.
- * @cmd: La commande à rechercher.
- * Return: Une chaîne allouée contenant le chemin complet de la commande
+ * get_command_path - looks for the full path
+ * @cmd: user command input
+ * Return: copy of the full path
  */
 char *get_command_path(char *cmd)
 {
