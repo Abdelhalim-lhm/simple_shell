@@ -40,7 +40,7 @@ int path(char *cmd)
 	full_path = get_command_path(argv[0]);
 	if (!full_path)
 	{
-		print("hsh:%s: command not found\n", argv[0]);
+		print("./hsh: 1:%s:not found\n", argv[0]);
 		return (127);
 	}
 	result = execute_command(full_path, argv);
