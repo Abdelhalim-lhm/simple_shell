@@ -31,6 +31,7 @@ int main(void)
 		if (_strcmp(cmd, "env") == 0)
 		{
 			env();
+			continue;
 			status = 0;
 		}
 		status = path(cmd);

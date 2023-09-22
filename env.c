@@ -9,6 +9,6 @@ void env(void)
 
 	for (; *env != NULL; env++)
 	{
-	print("%s\n", *env);
+		print("%s\n", *env);
 	}
 }
