@@ -9,6 +9,12 @@ int path(char *cmd)
 	char *argv[MAX_CMD_LENGTH / 2], *token, *full_path;
 	int result, cmd_len, i = 0;
 
+	token = strtok(cmd, " \t\n");
+	if (token == NULL)
+	{
+		free(cmd);
+		return (100);
+	}
 	while (*cmd == ' ')
 	{
 		cmd++;
@@ -19,16 +25,10 @@ int path(char *cmd)
 		cmd[cmd_len - 1] = '\0';
 		cmd_len--;
 	}
-	token = strtok(cmd, " \t");
-	if (token == NULL)
-	{
-		free(cmd);
-		return (100);
-	}
 	while (token != NULL)
 	{
 		argv[i++] = token;
-		token = strtok(NULL, " \t");
+		token = strtok(NULL, " \t\n");
 	}
 	argv[i] = NULL;
 	if (cmd[0] == '/')
