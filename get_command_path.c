@@ -33,7 +33,7 @@ char *get_command_path(char *cmd)
 	}
 	else
 	{
-		strcpy(full_path, dir);
+		_strcpy(full_path, dir);
 		strcat(full_path, "/");
 		strcat(full_path, cmd);
 	}
