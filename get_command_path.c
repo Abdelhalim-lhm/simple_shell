@@ -26,16 +26,16 @@ char *get_command_path(char *cmd)
 		if (current_dir)
 		{
 			_strcpy(full_path, current_dir);
-			strcat(full_path, "/");
-			strcat(full_path, cmd);
+			_strcat(full_path, "/");
+			_strcat(full_path, cmd);
 			free(current_dir);
 		}
 	}
 	else
 	{
 		_strcpy(full_path, dir);
-		strcat(full_path, "/");
-		strcat(full_path, cmd);
+		_strcat(full_path, "/");
+		_strcat(full_path, cmd);
 	}
 	if (access(full_path, X_OK) == 0)
 	{
