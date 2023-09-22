@@ -32,6 +32,7 @@ int main(void)
 		{
 			env();
 			status = 0;
+			free(cmd);
 			continue;
 		}
 		status = path(cmd);
