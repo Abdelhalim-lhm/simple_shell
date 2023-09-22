@@ -21,7 +21,7 @@ int execute_command(char *full_path, char *argv[])
 
 	if (child_pid == 0)
 	{
-		if (execve(full_path, argv, environ) == -1)
+		if (execve(full_path, argv, NULL) == -1)
 		{
 			perror("execve");
 			free(full_path);
