@@ -5,10 +5,10 @@
  */
 void env(void)
 {
-	int i;
+	char **env = environ;
 
-	for (i = 0; environ[i]; i++)
+	for (; *env != NULL; env++)
 	{
-		print("%s\n", environ[i]);
+	print("%s\n", *env);
 	}
 }

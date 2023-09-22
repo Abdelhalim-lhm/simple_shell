@@ -16,7 +16,7 @@ int main(void)
 		{
 			if (isatty(STDIN_FILENO))
 			{
-			print("\n");
+				print("\n");
 			}
 			free(cmd);
 			return (status);
@@ -31,8 +31,8 @@ int main(void)
 		if (_strcmp(cmd, "env") == 0)
 		{
 			env();
-			continue;
 			status = 0;
+			continue;
 		}
 		status = path(cmd);
 		if (status == 100)
