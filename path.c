@@ -14,7 +14,7 @@ int path(char *cmd)
 	int result;
 	char *full_path;
 
-	token = strtok(cmd, " \t\n");
+	token = strtok(cmd, " \t");
 	if (token == NULL)
 	{
 		free(cmd);
@@ -23,7 +23,7 @@ int path(char *cmd)
 	while (token != NULL)
 	{
 		argv[i++] = token;
-		token = strtok(NULL, " \t\n");
+		token = strtok(NULL, " \t");
 	}
 	argv[i] = NULL;
 
