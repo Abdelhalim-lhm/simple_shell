@@ -25,7 +25,7 @@ char *get_command_path(char *cmd)
 
 		if (current_dir)
 		{
-			strcpy(full_path, current_dir);
+			_strcpy(full_path, current_dir);
 			strcat(full_path, "/");
 			strcat(full_path, cmd);
 			free(current_dir);

@@ -17,4 +17,5 @@ char *get_command_path(char *cmd);
 int execute_command(char *full_path, char *argv[]);
 void print(const char *format, ...);
 void env(void);
+char *_strcpy(char *dest, char *src);
 #endif
