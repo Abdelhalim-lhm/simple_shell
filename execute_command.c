@@ -16,7 +16,7 @@ int execute_command(char *full_path, char *argv[])
 	if (child_pid == -1)
 	{
 		perror("fork");
-		return (1);
+		return (EXIT_FAILURE);
 	}
 
 	if (child_pid == 0)
@@ -25,13 +25,13 @@ int execute_command(char *full_path, char *argv[])
 		{
 			perror("execve");
 			free(full_path);
-			return (1);
+			return (EXIT_FAILURE);
 		}
 	}
 	else
 	{
 		waitpid(child_pid, &status, 0);
-		return (0);
+		return (WEXITSTATUS(status));
 	}
-	return (1);
+	return (0);
 }

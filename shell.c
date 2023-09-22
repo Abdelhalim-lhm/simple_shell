@@ -18,6 +18,7 @@ int main(void)
 			{
 			print("\n");
 			}
+			free(cmd);
 			return (status);
 		}
 		cmd[strcspn(cmd, "\n")] = '\0';
